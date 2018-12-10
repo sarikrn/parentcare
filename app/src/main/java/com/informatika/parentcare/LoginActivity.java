@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void correct(String inputPassword) {
                 Toast.makeText(LoginActivity.this, "Selamat Datang", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, com.informatika.parentcare.ChildProfileActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ChildProfileActivity.class);
                 startActivity(intent);
             }
 

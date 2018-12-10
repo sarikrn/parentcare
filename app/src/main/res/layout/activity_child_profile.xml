@@ -4,22 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:orientation="vertical"
+    android:background="#f8f8f8"
     tools:context=".ChildProfileActivity">
 
+    //@Sari Kurnia : Judul halaman
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:paddingTop="5dp"
         android:paddingBottom="10dp"
-        android:text="Child Profile"
+        android:paddingTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:text="CHILD PROFILE"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:letterSpacing="0.3"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,9 +33,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             android:orientation="vertical">
 
+            //@Sari Kurnia : Layout atas (Identitas Anak)
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,7 +43,8 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="3dp"
                 android:paddingRight="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:background="@color/colorPrimary">
 
                 <ImageView
                     android:id="@+id/photo"
@@ -65,7 +70,8 @@
                         android:text="SARI KURNIA"
                         android:textAlignment="center"
                         android:textColor="#ffffff"
-                        android:textSize="22dp" />
+                        android:textSize="20dp"
+                        android:letterSpacing="0.3"/>
 
                     <TextView
                         android:id="@+id/addiction"
@@ -87,19 +93,75 @@
                         android:id="@+id/button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginRight="70dp"
                         android:background="@drawable/button_general"
-                        android:elevation="4dp"
                         android:onClick="TambahDataAnak"
                         android:text="Lakukan Test"
-                        android:textColor="@color/colorFontDark" />
+                        android:textColor="@color/colorFontDark"/>
                 </RelativeLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+            //Sari Kurnia : Layout konten/hasil dari konsultasi
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="1"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:layout_weight="8"
+                android:padding="10dp">
 
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="15dp"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="3dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp">
+
+                        <TextView
+                            android:id="@+id/title_card"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:text="Tentang"
+                            android:textColor="@color/colorFontDark"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                            android:layout_below="@id/title_card"
+                            android:textColor="#A0A0A0"
+                            android:textAlignment="center"/>
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="100dp"
+                    android:layout_height="500dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="15dp"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="3dp"
+                    app:cardUseCompatPadding="true">
+
+                </android.support.v7.widget.CardView>
+
+            </GridLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 
