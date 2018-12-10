@@ -1,4 +1,4 @@
-package com.informatika.parentsare;
+package com.informatika.parentcare;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.informatika.parentsare", appContext.getPackageName());
+        assertEquals("com.informatika.parentcare", appContext.getPackageName());
     }
 }

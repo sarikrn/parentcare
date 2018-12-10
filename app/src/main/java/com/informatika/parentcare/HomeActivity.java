@@ -1,4 +1,4 @@
-package com.informatika.parentsare;
+package com.informatika.parentcare;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

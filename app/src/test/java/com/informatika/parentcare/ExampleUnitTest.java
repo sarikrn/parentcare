@@ -1,4 +1,4 @@
-package com.informatika.parentsare;
+package com.informatika.parentcare;
 
 import org.junit.Test;
 
