@@ -1,9 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f8f8f8"
+    android:orientation="vertical"
     tools:context=".HomeActivity">
 
-</android.support.constraint.ConstraintLayout>
+    //@Sari Kurnia : Judul halaman
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:letterSpacing="0.3"
+        android:paddingLeft="10dp"
+        android:paddingTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="BERANDA"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:background="@drawable/family" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="140dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/titleMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/selamat_datang"
+                        android:textColor="#fff"
+                        android:textSize="26sp" />
+
+                    <TextView
+                        android:id="@+id/titleLight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/titleMedium"
+                        android:text="@string/ibu_shiren_sungkar"
+                        android:textColor="#333"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="DetailChildInfo"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:columnCount="2"
+                        android:orientation="horizontal"
+                        android:rowCount="1">
+
+                        <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/avatar" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="30dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/titleNama"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sari_kurnia"
+                                android:textColor="#333"
+                                android:textSize="22sp" />
+
+                            <TextView
+                                android:id="@+id/titleStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/anak_pertama"
+                                android:textColor="#FFF"
+                                android:textSize="16sp"
+                                android:layout_marginBottom="20dp"/>
+
+                            <Button
+                                android:id="@+id/buttonLakukan"
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/lakukan"
+                                android:textColor="@color/colorFontDark"
+                                android:background="@drawable/bgputih"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </GridLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="DetailChildInfo"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:columnCount="2"
+                        android:orientation="horizontal"
+                        android:rowCount="1">
+
+                        <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/avatar" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="30dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/titleNama_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/berliana_putri"
+                                android:textColor="#333"
+                                android:textSize="22sp" />
+
+                            <TextView
+                                android:id="@+id/titleStatus_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/anak_kedua"
+                                android:textColor="#FFF"
+                                android:textSize="16sp"
+                                android:layout_marginBottom="20dp"/>
+
+                            <Button
+                                android:id="@+id/buttonLakukan_2"
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/lakukan"
+                                android:textColor="@color/colorFontDark"
+                                android:background="@drawable/bgputih"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </GridLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

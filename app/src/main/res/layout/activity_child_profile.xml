@@ -9,7 +9,6 @@
     tools:context=".ChildProfileActivity">
 
     //@Sari Kurnia : Judul halaman
-
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -20,7 +19,7 @@
         android:paddingTop="20dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:text="CHILD PROFILE"
+        android:text="PROFIL ANAK"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="12dp"

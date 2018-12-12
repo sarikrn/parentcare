@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Parent Care</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="ibu_shiren_sungkar">Ibu Shiren Sungkar</string>
+    <string name="sari_kurnia">Sari Kurnia</string>
+    <string name="anak_pertama">Anak Pertama</string>
+    <string name="berliana_putri">Berliana Putri</string>
+    <string name="anak_kedua">Anak Kedua</string>
+    <string name="lakukan">LAKUKAN TEST</string>
 </resources>
