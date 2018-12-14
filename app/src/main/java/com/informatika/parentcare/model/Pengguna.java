@@ -6,15 +6,16 @@ import java.io.Serializable;
 
 @IgnoreExtraProperties
 public class Pengguna implements Serializable {
-    private String nama, password, status;
+    private String nama, password, status, email;
 
     public Pengguna() {
     }
 
-    public Pengguna(String nama, String password, String status) {
+    public Pengguna(String nama, String password, String status, String email) {
         this.nama = nama;
         this.password = password;
         this.status = status;
+        this.email = email;
     }
 
     public String getNama() {
@@ -33,7 +34,19 @@ public class Pengguna implements Serializable {
         this.password = password;
     }
 
-    public String getStatus() { return status;}
+    public String getStatus() {
+        return status;
+    }
 
-    public void setStatus(String status) {  this.status = status;}
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
