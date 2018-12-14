@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "989041792957",
+    "firebase_url": "https://parentcare-medis.firebaseio.com",
+    "project_id": "parentcare-medis",
+    "storage_bucket": "parentcare-medis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989041792957:android:5c49f371a69704d9",
+        "android_client_info": {
+          "package_name": "com.informatika.parentcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989041792957-3i3jqvjhtu2jqfet93e9ocl2i0b22g0j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.informatika.parentcare",
+            "certificate_hash": "ffb1d143f30e5017f1287547d44516ce5e3ca5da"
+          }
+        },
+        {
+          "client_id": "989041792957-7gl59hb7ijfjilqcu2ggdtiubvi2tnln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMqyTCJAgYevs_AmF74v-f1PhBbhwhYNs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989041792957-7gl59hb7ijfjilqcu2ggdtiubvi2tnln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

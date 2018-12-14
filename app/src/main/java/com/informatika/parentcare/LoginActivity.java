@@ -2,16 +2,28 @@ package com.informatika.parentcare;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.informatika.parentcare.model.Pengguna;
 import com.nightonke.blurlockview.BlurLockView;
 import com.nightonke.blurlockview.Password;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
     private BlurLockView blurLockView;
+    private ArrayList <Pengguna> daftarPengguna;
+
+    private DatabaseReference dbPengguna;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         blurLockView.setOnLeftButtonClickListener(new BlurLockView.OnLeftButtonClickListener() {
             @Override
             public void onClick() {
-//                Toast.makeText(LoginActivity.this, "LEFT CLICKED", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -60,7 +71,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
+        dbPengguna = FirebaseDatabase.getInstance().getReference("pengguna");
     }
 
+    public void loadData(){
+        dbPengguna.child("pengguna").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                daftarPengguna = new ArrayList<>();
+                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                    Pengguna pengguna = noteDataSnapshot.getValue(Pengguna.class);
+//                    pengguna.setKey(noteDataSnapshot.getKey());
+
+                    daftarPengguna.add(pengguna);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

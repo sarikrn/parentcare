@@ -7,15 +7,15 @@
     android:padding="20dp"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorAccent"
+    android:background="@color/colorPrimary"
     tools:context=".RegisterActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardBackgroundColor="@color/colorAccent"
         app:cardElevation="2dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="5dp"
         app:cardUseCompatPadding="true">
 
         <RelativeLayout
@@ -27,10 +27,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
                 android:letterSpacing="0.2"
                 android:text="DAFTAR"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimary"
                 android:textSize="28dp"
                 android:textStyle="bold" />
 
@@ -38,30 +37,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="100dp">
+                android:layout_marginTop="80dp">
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent">
-
-                    <EditText
-                        android:id="@+id/nama"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:inputType="textPersonName"
-                        android:cursorVisible="true"
-                        android:textColor="@color/colorAccent"
-                        android:hint="Nama Lengkap"
-                        android:textColorHint="@color/colorAccent"
-                        android:textColorHighlight="@color/colorAccent"
-                        android:backgroundTint="@color/colorAccent"/>
-                </android.support.design.widget.TextInputLayout>
+                        android:background="#F8F8F8"
+                        android:paddingLeft="5dp"
+                        android:layout_marginBottom="10dp">
+
+                        <EditText
+                            android:id="@+id/nama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:cursorVisible="true"
+                            android:textColor="#686868"
+                            android:hint="Nama Lengkap"
+                            android:textColorHint="#686868"
+                            android:backgroundTint="#F8F8F8"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
                     android:layout_marginBottom="10dp">
 
                     <TextView
@@ -69,85 +70,89 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="15dp"
-                        android:layout_marginLeft="4dp"
                         android:text="Status"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18dp"/>
+                        android:textColor="#686868"
+                        android:textSize="16dp"/>
 
                     <RadioGroup
+                        android:id="@+id/statusGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/radioButton"
+                            android:id="@+id/statusIbu"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:text="Ibu"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="16dp"/>
+                            android:text="@string/status_ibu"
+                            android:textColor="#686868"
+                            android:textSize="16dp"
+                            android:buttonTint="@color/colorPrimary"/>
 
                         <RadioButton
-                            android:id="@+id/radioButton2"
+                            android:id="@+id/statusAyah"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ayah"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="16dp"/>
+                            android:text="@string/status_ayah"
+                            android:textColor="#686868"
+                            android:textSize="16dp"
+                            android:buttonTint="@color/colorPrimary"/>
                     </RadioGroup>
 
                 </LinearLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
-                    android:layout_marginBottom="5dp">
+                    android:background="#F8F8F8"
+                    android:paddingLeft="5dp"
+                    android:layout_marginBottom="10dp">
 
                     <EditText
                         android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
+                        android:backgroundTint="#F8F8F8"
+                        android:hint="Password ( 4 Digit )"
                         android:inputType="textVisiblePassword|numberPassword"
                         android:maxLength="4"
-                        android:textColor="@color/colorAccent"
-                        android:hint="Password ( 4 Digit )"
-                        android:textColorHint="@color/colorAccent"
-                        android:backgroundTint="@color/colorAccent"/>
-                </android.support.design.widget.TextInputLayout>
+                        android:textColor="#686868"
+                        android:textColorHint="#686868"
+                        android:textSize="16dp"/>
+                </LinearLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent">
+                    android:background="#F8F8F8"
+                    android:paddingLeft="5dp"
+                    android:layout_marginBottom="10dp">
 
                     <EditText
                         android:id="@+id/confirm_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:inputType="numberPassword"
+                        android:backgroundTint="#F8F8F8"
+                        android:hint="Konfirmasi Password"
+                        android:inputType="textVisiblePassword|numberPassword"
                         android:maxLength="4"
-                        android:textColor="@color/colorAccent"
-                        android:hint="Confirm Password ( 4 Digit )"
-                        android:textColorHint="@color/colorAccent"
-                        android:backgroundTint="@color/colorAccent"/>
-                </android.support.design.widget.TextInputLayout>
+                        android:textColor="#686868"
+                        android:textColorHint="#686868"
+                        android:textSize="16dp"/>
+                </LinearLayout>
 
                 <Button
+                    android:id="@+id/btn_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/button_general"
-                    android:backgroundTint="@color/colorAccent"
                     android:text="Submit"
                     android:textSize="16dp"
-                    android:textColor="@color/colorFontDark"
-                    android:onClick="FirstRegister"/>
+                    android:textColor="@color/colorAccent"/>
             </LinearLayout>
 
         </RelativeLayout>
