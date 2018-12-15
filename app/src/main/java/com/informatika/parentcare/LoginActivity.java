@@ -1,5 +1,6 @@
 package com.informatika.parentcare;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -25,18 +26,33 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-
         blurLockView = (BlurLockView) findViewById(R.id.blurLockView);
-
         updateUI();
-//        Bundle extras = getIntent().getExtras();
-//        String password = extras.getString(PASSWORD);
+
+        progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setMessage("Data Anda sedang di proses"); // Setting Message
+        progressDialog.setTitle("Tunggu Sebentar"); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(3500);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+            }
+        }).start();
 
     }
 

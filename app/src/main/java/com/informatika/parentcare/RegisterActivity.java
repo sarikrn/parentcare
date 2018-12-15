@@ -1,10 +1,10 @@
 package com.informatika.parentcare;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,15 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.informatika.parentcare.model.Pengguna;
-
-import java.util.ArrayList;
-
-import static android.provider.Telephony.Carriers.PASSWORD;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -30,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText fnama, fconfirm, femail, fpassword;
     private FirebaseAuth mAuth;
 
-    private ArrayList<Pengguna> dfPengguna;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +42,23 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (view == findViewById(R.id.btn_register)) {
                     registerUser();
+
+                    progressDialog = new ProgressDialog(RegisterActivity.this);
+                    progressDialog.setMessage("Loading..."); // Setting Message
+                    progressDialog.setTitle("Proses Registrasi"); // Setting Title
+                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+                    progressDialog.show(); // Display Progress Dialog
+                    progressDialog.setCancelable(false);
+                    new Thread(new Runnable() {
+                        public void run() {
+                            try {
+                                Thread.sleep(10000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            progressDialog.dismiss();
+                        }
+                    }).start();
                 }
             }
         });
@@ -61,37 +71,11 @@ public class RegisterActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             // Check if user is signed in (non-null) and update UI accordingly.
-//            updateUI(currentUser);
-            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
         } else {
             Toast.makeText(RegisterActivity.this, "Silahkan Register Terlebih Dahulu", Toast.LENGTH_LONG).show();
         }
-    }
-
-    private void updateUI(FirebaseUser currentUser) {
-        dfPengguna = new ArrayList<>();
-
-        FirebaseDatabase.getInstance().getReference()
-                .child("pengguna")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                            Pengguna pengguna = ds.getValue(Pengguna.class);
-                            dfPengguna.add(pengguna);
-                        }
-                        selectedUser(dfPengguna, mAuth.getCurrentUser().getEmail());
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        // Getting Post failed, log a message
-                        Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                        // ...
-                    }
-                });
-
     }
 
     public void registerUser() {
@@ -138,18 +122,6 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     });
         }
-
-    }
-
-    public void selectedUser(ArrayList<Pengguna> pengguna, String email) {
-        int i = 0;
-        while (!pengguna.get(i).getEmail().equals(email)){
-            i++;
-        }
-        Toast.makeText(RegisterActivity.this, pengguna.get(i).getEmail(), Toast.LENGTH_LONG).show();
-        Intent sendPassword = new Intent(RegisterActivity.this, LoginActivity.class);
-        sendPassword.putExtra(PASSWORD, pengguna.get(i).getPassword());
-        startActivity(sendPassword);
 
     }
 }
