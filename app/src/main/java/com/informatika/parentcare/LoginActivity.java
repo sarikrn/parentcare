@@ -17,15 +17,13 @@ import com.nightonke.blurlockview.BlurLockView;
 import com.nightonke.blurlockview.Password;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-
     private static final String TAG = "messege";
-    private FirebaseAuth mAuth;
     private BlurLockView blurLockView;
+    private ArrayList<Pengguna> dfPengguna;
 
-    private List<Pengguna> dfPengguna = new ArrayList<>();
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,41 +31,48 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+
         blurLockView = (BlurLockView) findViewById(R.id.blurLockView);
+
+        updateUI();
+//        Bundle extras = getIntent().getExtras();
+//        String password = extras.getString(PASSWORD);
+
+    }
+
+    private void updateUI() {
+        dfPengguna = new ArrayList<>();
 
         FirebaseDatabase.getInstance().getReference()
                 .child("pengguna")
                 .addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    Pengguna pengguna = ds.getValue(Pengguna.class);
-                    dfPengguna.add(pengguna);
-                }
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            Pengguna pengguna = ds.getValue(Pengguna.class);
+                            dfPengguna.add(pengguna);
+                        }
+                        selectedUser(dfPengguna, mAuth.getCurrentUser().getEmail());
+                    }
 
-                pinCodeLogin(dfPengguna);
-            }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Getting Post failed, log a message
+                        Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                        // ...
+                    }
+                });
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        });
     }
 
-    private void pinCodeLogin(List<Pengguna> dfPengguna){
-        String password = "";
-
-        for (int i=0;i<dfPengguna.size();i++){
-            if(dfPengguna.get(i).getEmail().equals(mAuth.getCurrentUser().getEmail())){
-                password = dfPengguna.get(i).getPassword();
-                break;
-            }
+    public void selectedUser(ArrayList<Pengguna> pengguna, String email) {
+        int i = 0;
+        while (!pengguna.get(i).getEmail().equals(email)){
+            i++;
         }
+        Toast.makeText(LoginActivity.this, pengguna.get(i).getEmail(), Toast.LENGTH_LONG).show();
 
-        blurLockView.setCorrectPassword(password);
+        blurLockView.setCorrectPassword(pengguna.get(i).getPassword());
         blurLockView.setLeftButton("Batal");
         blurLockView.setRightButton("Hapus");
         blurLockView.setTypeface(Typeface.DEFAULT);
@@ -76,8 +81,10 @@ public class LoginActivity extends AppCompatActivity {
         blurLockView.setOnLeftButtonClickListener(new BlurLockView.OnLeftButtonClickListener() {
             @Override
             public void onClick() {
-//                Toast.makeText(LoginActivity.this, "LEFT CLICKED", Toast.LENGTH_SHORT).show();
                 finish();
+                System.exit(0);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -93,9 +100,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void incorrect(String inputPassword) {
                 int count = 0;
-                if(count < 3){
+                if (count < 3) {
                     Toast.makeText(LoginActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Toast.makeText(LoginActivity.this, "Coba Lain Kali", Toast.LENGTH_SHORT).show();
                     finish();
                 }
