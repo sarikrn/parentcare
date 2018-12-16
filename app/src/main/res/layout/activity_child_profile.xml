@@ -95,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="70dp"
                         android:layout_marginRight="70dp"
-                        android:background="@drawable/button_general"
+                        android:background="@android:color/white"
                         android:onClick="TambahDataAnak"
                         android:text="Lakukan Test"
                         android:textColor="@color/colorFontDark" />

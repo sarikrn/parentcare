@@ -9,6 +9,7 @@
     tools:context=".HomeActivity">
 
     //@Sari Kurnia : Judul halaman
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -72,142 +73,99 @@
 
             </RelativeLayout>
 
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="10dp">-->
+
+            <!--<android.support.v7.widget.CardView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:onClick="DetailChildInfo"-->
+            <!--app:cardBackgroundColor="@color/colorPrimary"-->
+            <!--app:cardCornerRadius="0dp"-->
+            <!--app:cardElevation="2dp"-->
+            <!--app:cardUseCompatPadding="true">-->
+
+            <!--<GridLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:columnCount="2"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:rowCount="1">-->
+
+            <!--<ImageView-->
+            <!--android:layout_width="120dp"-->
+            <!--android:layout_height="120dp"-->
+            <!--android:scaleType="fitXY" />-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_marginStart="30dp"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/titleNama_2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/berliana_putri"-->
+            <!--android:textColor="#333"-->
+            <!--android:textSize="22sp" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/titleStatus_2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/anak_kedua"-->
+            <!--android:textColor="#FFF"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_marginBottom="20dp"/>-->
+
+            <!--<Button-->
+            <!--android:id="@+id/buttonLakukan_2"-->
+            <!--android:layout_width="160dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/lakukan"-->
+            <!--android:textColor="@color/colorFontDark"-->
+            <!--android:background="@android:color/white"-->
+            <!--android:textSize="16sp" />-->
+            <!--</LinearLayout>-->
+
+            <!--</GridLayout>-->
+
+            <!--</android.support.v7.widget.CardView>-->
+
+            <!--</RelativeLayout>-->
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:padding="10dp">
 
-                <android.support.v7.widget.CardView
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rc_list_request"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="DetailChildInfo"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:cardCornerRadius="0dp"
-                    app:cardElevation="2dp"
-                    app:cardUseCompatPadding="true">
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"/>
 
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:columnCount="2"
-                        android:orientation="horizontal"
-                        android:rowCount="1">
-
-                        <ImageView
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:scaleType="fitXY"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="30dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/titleNama"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/sari_kurnia"
-                                android:textColor="#333"
-                                android:textSize="22sp" />
-
-                            <TextView
-                                android:id="@+id/titleStatus"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/anak_pertama"
-                                android:textColor="#FFF"
-                                android:textSize="16sp"
-                                android:layout_marginBottom="20dp"/>
-
-                            <Button
-                                android:id="@+id/buttonLakukan"
-                                android:layout_width="160dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/lakukan"
-                                android:textColor="@color/colorFontDark"
-                                android:background="@color/colorAccent"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                    </GridLayout>
-
-                </android.support.v7.widget.CardView>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="DetailChildInfo"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:cardCornerRadius="0dp"
-                    app:cardElevation="2dp"
-                    app:cardUseCompatPadding="true">
-
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:columnCount="2"
-                        android:orientation="horizontal"
-                        android:rowCount="1">
-
-                        <ImageView
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:scaleType="fitXY" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="30dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/titleNama_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/berliana_putri"
-                                android:textColor="#333"
-                                android:textSize="22sp" />
-
-                            <TextView
-                                android:id="@+id/titleStatus_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/anak_kedua"
-                                android:textColor="#FFF"
-                                android:textSize="16sp"
-                                android:layout_marginBottom="20dp"/>
-
-                            <Button
-                                android:id="@+id/buttonLakukan_2"
-                                android:layout_width="160dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/lakukan"
-                                android:textColor="@color/colorFontDark"
-                                android:background="@color/colorAccent"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                    </GridLayout>
-
-                </android.support.v7.widget.CardView>
-
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab_add"
+                    android:src="@drawable/ic_add_black_24dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </RelativeLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
+
 
 </LinearLayout>

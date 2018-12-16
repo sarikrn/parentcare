@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "989041792957-tg5klb3v34gc63rj5ia0513atfgc80dq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.informatika.parentcare",
+            "certificate_hash": "b2719e78d3ca49489c02ba1538c2dd6226e0448f"
+          }
+        },
+        {
           "client_id": "989041792957-7gl59hb7ijfjilqcu2ggdtiubvi2tnln.apps.googleusercontent.com",
           "client_type": 3
         }
