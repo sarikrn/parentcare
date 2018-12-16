@@ -14,13 +14,16 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkbox"/>
+            android:id="@+id/checkbox"
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/gejala"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Gejala"
+            android:textSize="20dp"
             android:textColor="@android:color/black"/>
     </LinearLayout>
 </LinearLayout>

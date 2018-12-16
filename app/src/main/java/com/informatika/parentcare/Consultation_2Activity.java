@@ -58,4 +58,6 @@ public class Consultation_2Activity extends AppCompatActivity {
         });
     }
 
+    private void konsultasi(){
+        }
 }

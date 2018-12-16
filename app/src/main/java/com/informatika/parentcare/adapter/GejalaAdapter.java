@@ -70,7 +70,7 @@ public class GejalaAdapter  extends BaseAdapter {
         }
 
 
-        holder.checkBox.setText("Checkbox "+position);
+//        holder.checkBox.setText("Checkbox "+position);
         holder.tvGejala.setText(gejalaArrayList.get(position).getDesk());
 
         holder.checkBox.setChecked(gejalaArrayList.get(position).getSelected());
