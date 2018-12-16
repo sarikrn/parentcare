@@ -8,22 +8,26 @@ import java.util.HashMap;
 
 @IgnoreExtraProperties
 public class Anak implements Serializable {
-    private String nama, gender, tanggal_lahir, key;
+    private String nama, jeniskelamin, ttl, key, kode_orangtua, urutan;
     private ArrayList<Konsultasi> konsultasi= new ArrayList<>();
 
     public Anak(){
     }
 
-    public Anak(String nama, String gender, String tanggal_lahir) {
+    public Anak(String nama, String jeniskelamin, String ttl, String kode_orangtua, String urutan) {
         this.nama = nama;
-        this.gender = gender;
-        this.tanggal_lahir = tanggal_lahir;
+        this.jeniskelamin = jeniskelamin;
+        this.ttl = ttl;
+        this.kode_orangtua = kode_orangtua;
+        this.urutan = urutan;
     }
 
-    public Anak(String nama, String gender, String tanggal_lahir, ArrayList<Konsultasi> konsultasi) {
+    public Anak(String nama, String jeniskelamin, String ttl, String kode_orangtua, String urutan, ArrayList<Konsultasi> konsultasi) {
         this.nama = nama;
-        this.gender = gender;
-        this.tanggal_lahir = tanggal_lahir;
+        this.jeniskelamin = jeniskelamin;
+        this.ttl = ttl;
+        this.kode_orangtua = kode_orangtua;
+        this.urutan = urutan;
         this.konsultasi = konsultasi;
     }
 
@@ -34,18 +38,18 @@ public class Anak implements Serializable {
         this.nama = nama;
     }
 
-    public String getGender() {
-        return gender;
+    public String getJeniskelamin() {
+        return jeniskelamin;
     }
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setJeniskelamin(String jeniskelamin) {
+        this.jeniskelamin = jeniskelamin;
     }
 
-    public String getTanggal_lahir() {
-        return tanggal_lahir;
+    public String getTtl() {
+        return ttl;
     }
-    public void setTanggal_lahir(String tanggal_lahir) {
-        this.tanggal_lahir = tanggal_lahir;
+    public void setTtl(String ttl) {
+        this.ttl = ttl;
     }
 
     public String getKey() {
@@ -60,5 +64,19 @@ public class Anak implements Serializable {
     }
     public void setKonsultasi(ArrayList<Konsultasi> konsultasi) {
         this.konsultasi = konsultasi;
+    }
+
+    public String getKode_orangtua() {
+        return kode_orangtua;
+    }
+    public void setKode_orangtua(String kode_orangtua) {
+        this.kode_orangtua = kode_orangtua;
+    }
+
+    public String getUrutan() {
+        return urutan;
+    }
+    public void setUrutan(String urutan) {
+        this.urutan = urutan;
     }
 }

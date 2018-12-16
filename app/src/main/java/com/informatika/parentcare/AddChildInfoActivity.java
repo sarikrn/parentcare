@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +30,7 @@ public class AddChildInfoActivity extends AppCompatActivity {
 
     private ChildAdapter childAdapter;
     private DatabaseReference dbAnak ;
+    private FirebaseAuth mAuth;
     private ProgressDialog loading;
 
     @Override
@@ -37,6 +39,7 @@ public class AddChildInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_child_info);
 
         dbAnak = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
         fnama = (EditText) findViewById(R.id.nama);
         fstatus_anak = (EditText) findViewById(R.id.status_anak);
@@ -46,7 +49,7 @@ public class AddChildInfoActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int size = (int) dataSnapshot.getChildrenCount();
-                tketanak.setText(String.valueOf(size));
+                tketanak.setText(String.valueOf(size+1));
             }
 
             @Override
@@ -61,7 +64,7 @@ public class AddChildInfoActivity extends AppCompatActivity {
                 String nama = fnama.getText().toString();
                 String status = fstatus_anak.getText().toString();
 
-                addChild(new Anak(nama, "perempuan", status));
+                addChild(new Anak(nama, "perempuan", "06-09-1999", mAuth.getCurrentUser().getUid(), status));
                 loading = ProgressDialog.show(AddChildInfoActivity.this,
                         null,
                         "Mohon tunggu sebentar...",
@@ -79,7 +82,7 @@ public class AddChildInfoActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
 
         dbAnak.child("anak")
-                .child("__anak" + getCount)
+                .child("A" + getCount)
                 .setValue(anak)
                 .addOnSuccessListener(AddChildInfoActivity.this, new OnSuccessListener<Void>() {
                     @Override
