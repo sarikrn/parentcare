@@ -9,8 +9,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
 
     private DatabaseReference database;
+    private FirebaseAuth mAuth;
 
     private ArrayList<Anak> dfAnak;
     private ChildAdapter requestChildAdapter;
@@ -31,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView rc_list_request;
     private ProgressDialog loading;
     private FloatingActionButton fab_add;
+    private TextView judul;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +42,23 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         database = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
         rc_list_request = findViewById(R.id.rc_list_request);
-        fab_add = findViewById(R.id.fab_add);
+
+        findViewById(R.id.fab_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, AddChildInfoActivity.class));
+//                        .putExtra("id", "")
+//                        .putExtra("title", ""));
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rc_list_request.setLayoutManager(mLayoutManager);
@@ -56,10 +74,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dfAnak = new ArrayList<>();
+
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                     Anak requests = noteDataSnapshot.getValue(Anak.class);
-                    requests.setKey(noteDataSnapshot.getKey());
-                    dfAnak.add(requests);
+                    if (requests.getKode_orangtua().equals(mAuth.getCurrentUser().getUid())) {
+                        requests.setKey(noteDataSnapshot.getKey());
+                        dfAnak.add(requests);
+                    }
                 }
                 requestChildAdapter = new ChildAdapter(dfAnak, HomeActivity.this);
                 rc_list_request.setAdapter(requestChildAdapter);
@@ -70,15 +91,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println(databaseError.getDetails() + " " + databaseError.getMessage());
                 loading.dismiss();
-            }
-        });
-
-        fab_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, AddChildInfoActivity.class)
-                        .putExtra("id", "")
-                        .putExtra("title", ""));
             }
         });
     }

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.informatika.parentcare.AddChildInfoActivity;
+import com.informatika.parentcare.ChildProfileActivity;
 import com.informatika.parentcare.R;
 import com.informatika.parentcare.model.Anak;
 
@@ -55,11 +56,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.MyViewHolder
         holder.rl_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent goDetail = new Intent(mActivity, AddChildInfoActivity.class);
+                Intent goDetail = new Intent(mActivity, ChildProfileActivity.class);
                 goDetail.putExtra("id", anak.getKey());
-                goDetail.putExtra("title", anak.getNama());
-
+                goDetail.putExtra("nama", anak.getNama());
+                goDetail.putExtra("urutan", anak.getUrutan());
+                goDetail.putExtra("orangTua", anak.getKode_orangtua());
                 mActivity.startActivity(goDetail);
             }
         });

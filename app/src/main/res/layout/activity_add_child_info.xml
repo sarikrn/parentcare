@@ -4,16 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".AddChildInfoActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:letterSpacing="0.3"
+        android:paddingLeft="10dp"
+        android:paddingTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="TAMBAH DATA ANAK"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="14dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/keterangan_anak"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text=""
+        android:visibility="invisible"/>
 
     <LinearLayout
         android:layout_width="match_parent"

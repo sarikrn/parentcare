@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private ProgressDialog progressDialog;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,24 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         blurLockView = (BlurLockView) findViewById(R.id.blurLockView);
-        updateUI();
-
-        progressDialog = new ProgressDialog(LoginActivity.this);
-        progressDialog.setMessage("Data Anda sedang di proses"); // Setting Message
-        progressDialog.setTitle("Tunggu Sebentar"); // Setting Title
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
-        progressDialog.show(); // Display Progress Dialog
-        progressDialog.setCancelable(false);
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Thread.sleep(3500);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                progressDialog.dismiss();
-            }
-        }).start();
 
     }
 
@@ -131,4 +115,27 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        updateUI();
+
+        progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setMessage("Data Anda sedang di proses"); // Setting Message
+        progressDialog.setTitle(null); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+            }
+        }).start();
+    }
 }

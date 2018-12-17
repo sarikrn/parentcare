@@ -8,7 +8,6 @@ public class Pengguna implements Serializable {
     private String nama, password, status, email;
 
     public Pengguna() {
-
     }
 
     public Pengguna(String nama, String password, String status, String email) {

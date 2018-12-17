@@ -27,7 +27,6 @@ public class AddChildInfoActivity extends AppCompatActivity {
     private EditText fnama, fstatus_anak;
     private TextView tketanak;
     private ArrayList<Anak> dfAnak = new ArrayList<>();
-
     private ChildAdapter childAdapter;
     private DatabaseReference dbAnak ;
     private FirebaseAuth mAuth;
@@ -77,10 +76,6 @@ public class AddChildInfoActivity extends AppCompatActivity {
     private void addChild(Anak anak){
         String getCount = tketanak.getText().toString();
 
-        Toast.makeText(AddChildInfoActivity.this,
-                String.valueOf(getCount),
-                Toast.LENGTH_SHORT).show();
-
         dbAnak.child("anak")
                 .child("A" + getCount)
                 .setValue(anak)
@@ -95,7 +90,6 @@ public class AddChildInfoActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
     }
 
 //    private void addConsultation(Anak anak){

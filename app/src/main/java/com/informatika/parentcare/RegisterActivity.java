@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +23,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "messege";
     private EditText fnama, fconfirm, femail, fpassword;
+    private RadioGroup statusGroup;
+    private RadioButton statusOrangtua;
     private FirebaseAuth mAuth;
 
     private ProgressDialog progressDialog;
@@ -34,6 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
         femail = (EditText) findViewById(R.id.email);
         fpassword = (EditText) findViewById(R.id.password);
         fconfirm = (EditText) findViewById(R.id.confirm_password);
+
+        statusGroup = (RadioGroup) findViewById(R.id.statusGroup);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -52,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                     new Thread(new Runnable() {
                         public void run() {
                             try {
-                                Thread.sleep(10000);
+                                Thread.sleep(5000);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -79,12 +85,16 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registerUser() {
-        final String nama, password, confirm, email;
+        final String nama, password, confirm, email, status;
 
         nama = fnama.getText().toString();
         email = femail.getText().toString();
         password = fpassword.getText().toString();
         confirm = fconfirm.getText().toString();
+
+        int selectedID = statusGroup.getCheckedRadioButtonId();
+        statusOrangtua = (RadioButton) findViewById(selectedID);
+        status = statusOrangtua.getText().toString();
 
         if (password.equals(confirm)) {
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -96,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Pengguna pengguna = new Pengguna(
                                         nama,
                                         password,
-                                        "Ibu",
+                                        status,
                                         email
                                 );
 

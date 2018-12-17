@@ -9,7 +9,6 @@ import java.util.HashMap;
 @IgnoreExtraProperties
 public class Anak implements Serializable {
     private String nama, jeniskelamin, ttl, key, kode_orangtua, urutan;
-    private ArrayList<Konsultasi> konsultasi= new ArrayList<>();
 
     public Anak(){
     }
@@ -20,15 +19,6 @@ public class Anak implements Serializable {
         this.ttl = ttl;
         this.kode_orangtua = kode_orangtua;
         this.urutan = urutan;
-    }
-
-    public Anak(String nama, String jeniskelamin, String ttl, String kode_orangtua, String urutan, ArrayList<Konsultasi> konsultasi) {
-        this.nama = nama;
-        this.jeniskelamin = jeniskelamin;
-        this.ttl = ttl;
-        this.kode_orangtua = kode_orangtua;
-        this.urutan = urutan;
-        this.konsultasi = konsultasi;
     }
 
     public String getNama() {
@@ -57,13 +47,6 @@ public class Anak implements Serializable {
     }
     public void setKey(String key) {
         this.key = key;
-    }
-
-    public ArrayList<Konsultasi> getKonsultasi() {
-        return konsultasi;
-    }
-    public void setKonsultasi(ArrayList<Konsultasi> konsultasi) {
-        this.konsultasi = konsultasi;
     }
 
     public String getKode_orangtua() {

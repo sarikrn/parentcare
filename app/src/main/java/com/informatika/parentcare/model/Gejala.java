@@ -1,7 +1,7 @@
 package com.informatika.parentcare.model;
 
 public class Gejala {
-    boolean isSelected = false;
+    boolean isSelected;
     String kode;
     String desk;
 

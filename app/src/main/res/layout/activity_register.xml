@@ -134,7 +134,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#F8F8F8"
-                        android:hint="Password ( 4 Digit )"
+                        android:hint="Password ( 6 Digit )"
                         android:inputType="textVisiblePassword|numberPassword"
                         android:maxLength="6"
                         android:textColor="#686868"
