@@ -10,20 +10,18 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.informatika.parentcare.adapter.GejalaAdapter;
-import com.informatika.parentcare.model.Anak;
 import com.informatika.parentcare.model.Gejala;
 import com.informatika.parentcare.model.Konsultasi;
 
-import java.sql.SQLOutput;
-import java.text.DecimalFormat;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +34,7 @@ public class ConsultationActivity extends AppCompatActivity {
     private DatabaseReference dbGejala, dbKonsultasi;
     private float min = 0;
     private String kode;
-    private String kodeAnak, namaAnak, urutanAnak, solusiKasus;
+    private String kodeAnak, namaAnak, urutanAnak, solusiKasus, currentDateTimeString, strDate;
     private int counter;
 
 
@@ -98,6 +96,8 @@ public class ConsultationActivity extends AppCompatActivity {
                 Toast.makeText(ConsultationActivity.this, "Data tidak ditemukan atau kosong", Toast.LENGTH_SHORT).show();
             }
         });
+
+        currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
     }
 
     public void kemiripanKonsultasi(View view) {
@@ -173,9 +173,7 @@ public class ConsultationActivity extends AppCompatActivity {
                             solusiKasus = dataSnapshot.child("solusi").getValue().toString();
 //                            Toast.makeText(ConsultationActivity.this, solusiKasus, Toast.LENGTH_SHORT).show();
 
-
-
-                            Konsultasi konsultasi = new Konsultasi("00-00-0000",
+                            Konsultasi konsultasi = new Konsultasi(currentDateTimeString,
                                     solusiKasus,
                                     kodeAnak,
                                     gejalaAnak);
@@ -214,7 +212,7 @@ public class ConsultationActivity extends AppCompatActivity {
             namaAnak = getIntent().getStringExtra("nama");
             urutanAnak = getIntent().getStringExtra("urutan");
 
-            Konsultasi konsultasi = new Konsultasi("00-00-0000",
+            Konsultasi konsultasi = new Konsultasi(currentDateTimeString,
                     solusiKasus,
                     kodeAnak,
                     gejalaAnak);

@@ -50,8 +50,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this, AddChildInfoActivity.class));
-//                        .putExtra("id", "")
-//                        .putExtra("title", ""));
             }
         });
     }
@@ -117,5 +115,7 @@ public class HomeActivity extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+
+        onPause();
     }
 }

@@ -25,7 +25,10 @@
         <activity android:name=".FirstInfoActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".ConsultationActivity" />
-        <activity android:name=".ResultConsultationActivity"></activity>
+        <activity android:name=".ResultConsultationActivity" />
+        <activity android:name=".LoginPsikologActivity" />
+        <activity android:name=".AddCasebaseActivity" />
+        <activity android:name=".ResultNewCaseActivity"></activity>
     </application>
 
 </manifest>
