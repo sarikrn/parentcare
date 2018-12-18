@@ -8,15 +8,15 @@ import java.util.List;
 
 @IgnoreExtraProperties
 public class Konsultasi implements Serializable {
-    private String jadwal, kodekasus, id_anak;
+    private String jadwal, solusi, id_anak;
     private List<String> gejalaDipilih = new ArrayList<>();
 
     public Konsultasi(){
     }
 
-    public Konsultasi(String jadwal, String kodekasus, String id_anak, List<String> gejaladipilih) {
+    public Konsultasi(String jadwal, String solusi, String id_anak, List<String> gejaladipilih) {
         this.jadwal = jadwal;
-        this.kodekasus = kodekasus;
+        this.solusi = solusi;
         this.id_anak = id_anak;
         this.gejalaDipilih = gejaladipilih;
     }
@@ -28,11 +28,11 @@ public class Konsultasi implements Serializable {
         this.jadwal = jadwal;
     }
 
-    public String getkodekasus() {
-        return kodekasus;
+    public String getSolusi() {
+        return solusi;
     }
-    public void setkodekasus(String kodekasus) {
-        this.kodekasus = kodekasus;
+    public void setSolusi(String solusi) {
+        this.solusi = solusi;
     }
 
     public String getId_anak() {

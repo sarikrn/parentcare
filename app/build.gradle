@@ -35,7 +35,7 @@ dependencies {
     implementation 'com.android.support:support-v4:28.0.0'
 
     // History/ Sejarah konsultasi
-    implementation 'com.github.vipulasri:timelineview:1.0.6'
+    implementation 'com.github.vipulasri:timelineview:1.0.3'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
     implementation 'com.android.support:design:28.0.0'

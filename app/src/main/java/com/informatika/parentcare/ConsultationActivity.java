@@ -61,7 +61,7 @@ public class ConsultationActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int size = (int) dataSnapshot.getChildrenCount();
-                counter = size+1;
+                counter = size + 1;
             }
 
             @Override
@@ -173,7 +173,7 @@ public class ConsultationActivity extends AppCompatActivity {
                             namaAnak = getIntent().getStringExtra("nama");
 
                             Konsultasi konsultasi = new Konsultasi("00-00-0000",
-                                    kode_kasus,
+                                    solusiKasus,
                                     kodeAnak,
                                     gejalaAnak);
 
@@ -186,7 +186,8 @@ public class ConsultationActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         startActivity(new Intent(ConsultationActivity.this, ResultConsultationActivity.class)
                                                 .putExtra("solusi", solusiKasus)
-                                                .putExtra("kodeAnak", kodeAnak));
+                                                .putExtra("kodeAnak", kodeAnak)
+                                                .putExtra("nama", namaAnak));
 
                                     } else {
                                         //display failure
