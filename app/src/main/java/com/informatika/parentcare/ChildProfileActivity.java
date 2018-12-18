@@ -61,7 +61,9 @@ public class ChildProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ChildProfileActivity.this, ConsultationActivity.class)
                         .putExtra("kodeAnak", kodeAnak)
-                        .putExtra("nama", namaAnak));
+                        .putExtra("nama", namaAnak)
+                        .putExtra("urutan", urutanAnak)
+                        .putExtra("halaman","profilanak"));
             }
         });
 
@@ -90,5 +92,11 @@ public class ChildProfileActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ChildProfileActivity.this,HomeActivity.class));
     }
 }

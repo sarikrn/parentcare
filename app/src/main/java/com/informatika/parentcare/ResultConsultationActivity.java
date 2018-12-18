@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class ResultConsultationActivity extends AppCompatActivity {
 
-    private String solusi, kodeAnak, namaAnak;
+    private String solusi, kodeAnak, namaAnak, urutanAnak, status;
     private TextView solusiHasil;
 
     @Override
@@ -18,18 +18,32 @@ public class ResultConsultationActivity extends AppCompatActivity {
 
         solusi = getIntent().getStringExtra("solusi");
         kodeAnak = getIntent().getStringExtra("kodeAnak");
-        namaAnak = getIntent().getStringExtra("namaAnak");
+        namaAnak = getIntent().getStringExtra("nama");
+        urutanAnak = getIntent().getStringExtra("urutan");
+        status = getIntent().getStringExtra("status");
 
         solusiHasil = (TextView) findViewById(R.id.deskSolusi);
-        solusiHasil.setText(kodeAnak + " - " + solusi);
+
+        if (status.equals("ada")) {
+            solusiHasil.setText(kodeAnak + " - " + solusi);
+        }else{
+            solusiHasil.setText(solusi);
+        }
 
         findViewById(R.id.btn_kembaliProfilAnak).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ResultConsultationActivity.this, ChildProfileActivity.class)
                         .putExtra("kodeAnak", kodeAnak)
-                        .putExtra("nama", namaAnak));
+                        .putExtra("nama", namaAnak)
+                        .putExtra("urutan", urutanAnak));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ResultConsultationActivity.this,ChildProfileActivity.class));
     }
 }

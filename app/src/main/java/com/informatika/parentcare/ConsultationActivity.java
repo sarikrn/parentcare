@@ -36,7 +36,7 @@ public class ConsultationActivity extends AppCompatActivity {
     private DatabaseReference dbGejala, dbKonsultasi;
     private float min = 0;
     private String kode;
-    private String kodeAnak, namaAnak;
+    private String kodeAnak, namaAnak, urutanAnak, solusiKasus;
     private int counter;
 
 
@@ -47,6 +47,10 @@ public class ConsultationActivity extends AppCompatActivity {
 
         dbGejala = FirebaseDatabase.getInstance().getReference();
         dbKonsultasi = FirebaseDatabase.getInstance().getReference();
+
+        kodeAnak = getIntent().getStringExtra("kodeAnak");
+        namaAnak = getIntent().getStringExtra("nama");
+        urutanAnak = getIntent().getStringExtra("urutan");
 
         listView = (ListView) findViewById(R.id.gejala_listView);
 
@@ -166,11 +170,10 @@ public class ConsultationActivity extends AppCompatActivity {
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            final String solusiKasus = dataSnapshot.child("solusi").getValue().toString();
+                            solusiKasus = dataSnapshot.child("solusi").getValue().toString();
 //                            Toast.makeText(ConsultationActivity.this, solusiKasus, Toast.LENGTH_SHORT).show();
 
-                            kodeAnak = getIntent().getStringExtra("kodeAnak");
-                            namaAnak = getIntent().getStringExtra("nama");
+
 
                             Konsultasi konsultasi = new Konsultasi("00-00-0000",
                                     solusiKasus,
@@ -187,7 +190,9 @@ public class ConsultationActivity extends AppCompatActivity {
                                         startActivity(new Intent(ConsultationActivity.this, ResultConsultationActivity.class)
                                                 .putExtra("solusi", solusiKasus)
                                                 .putExtra("kodeAnak", kodeAnak)
-                                                .putExtra("nama", namaAnak));
+                                                .putExtra("nama", namaAnak)
+                                                .putExtra("urutan", urutanAnak)
+                                                .putExtra("status", "ada"));
 
                                     } else {
                                         //display failure
@@ -203,7 +208,54 @@ public class ConsultationActivity extends AppCompatActivity {
                         }
                     });
         } else {
-            Toast.makeText(ConsultationActivity.this, "Solusi tidak ditemukan. Silahkan menghubungi psikiater pada kontak dibawah ini", Toast.LENGTH_SHORT).show();
+            solusiKasus = "Solusi tidak ditemukan. Silahkan menghubungi psikiater / ahli";
+
+            kodeAnak = getIntent().getStringExtra("kodeAnak");
+            namaAnak = getIntent().getStringExtra("nama");
+            urutanAnak = getIntent().getStringExtra("urutan");
+
+            Konsultasi konsultasi = new Konsultasi("00-00-0000",
+                    solusiKasus,
+                    kodeAnak,
+                    gejalaAnak);
+
+            FirebaseDatabase.getInstance().getReference()
+                    .child("konsultasi")
+                    .child("Konsul" + String.valueOf(counter))
+                    .setValue(konsultasi).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(ConsultationActivity.this, ResultConsultationActivity.class)
+                                .putExtra("solusi", solusiKasus)
+                                .putExtra("kodeAnak", kodeAnak)
+                                .putExtra("nama", namaAnak)
+                                .putExtra("urutan", urutanAnak)
+                                .putExtra("status", "kosong"));
+                    } else {
+                        //display failure
+                    }
+                }
+            });
+
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        String halaman = getIntent().getStringExtra("halaman");
+
+        if(halaman.equals("home")){
+            startActivity(new Intent(ConsultationActivity.this, HomeActivity.class)
+                    .putExtra("kodeAnak", kodeAnak)
+                    .putExtra("nama", namaAnak)
+                    .putExtra("urutan", urutanAnak));
+        }else{
+            startActivity(new Intent(ConsultationActivity.this, ChildProfileActivity.class)
+                    .putExtra("kodeAnak", kodeAnak)
+                    .putExtra("nama", namaAnak)
+                    .putExtra("urutan", urutanAnak));
         }
     }
 }

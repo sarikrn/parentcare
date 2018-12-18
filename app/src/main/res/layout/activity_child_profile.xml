@@ -24,97 +24,84 @@
         android:textSize="14dp"
         android:textStyle="bold" />
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/title">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        //@Sari Kurnia : Layout atas (Identitas Anak)
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
 
-            //@Sari Kurnia : Layout atas (Identitas Anak)
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/user_identity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp">
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="7dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
-                <ImageView
-                    android:id="@+id/photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="100sp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/parentsicon" />
-
-                <RelativeLayout
-                    android:id="@+id/user_identity"
+                <TextView
+                    android:id="@+id/namaAnak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="7dp"
-                    android:layout_toEndOf="@id/photo"
-                    android:paddingLeft="25dp"
-                    android:paddingRight="25dp">
+                    android:letterSpacing="0.2"
+                    android:text="SARI KURNIA"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textSize="30dp" />
 
-                    <TextView
-                        android:id="@+id/namaAnak"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:letterSpacing="0.2"
-                        android:text="SARI KURNIA"
-                        android:textAlignment="center"
-                        android:textColor="#ffffff"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/urutanAnak"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/namaAnak"
-                        android:text="Anak Pertama"
-                        android:textAlignment="center"
-                        android:textColor="#ffffff"
-                        android:textSize="14dp" />
-                </RelativeLayout>
-
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/urutanAnak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp">
+                    android:layout_below="@id/namaAnak"
+                    android:text="Anak Pertama"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-                    <Button
-                        android:id="@+id/lakukanTest"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="70dp"
-                        android:layout_marginRight="70dp"
-                        android:background="@android:color/white"
-                        android:text="Lakukan Test"
-                        android:textColor="@color/colorFontDark" />
-                </RelativeLayout>
-
-            </LinearLayout>
-=
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rc_list_konsultasi"
+                <Button
+                    android:id="@+id/lakukanTest"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:background="@android:color/white"
+                    android:text="Lakukan Test"
+                    android:textColor="@color/colorFontDark" />
+            </RelativeLayout>
 
-            </LinearLayout>
+        </LinearLayout>
+        =
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rc_list_konsultasi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>

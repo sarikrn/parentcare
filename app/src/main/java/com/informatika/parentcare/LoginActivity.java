@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void selectedUser(ArrayList<Pengguna> pengguna, String email) {
         int i = 0;
-        while (!pengguna.get(i).getEmail().equals(email)){
+        while (!pengguna.get(i).getEmail().equals(email)) {
             i++;
         }
         Toast.makeText(LoginActivity.this, pengguna.get(i).getEmail(), Toast.LENGTH_LONG).show();
@@ -81,9 +81,9 @@ public class LoginActivity extends AppCompatActivity {
         blurLockView.setOnLeftButtonClickListener(new BlurLockView.OnLeftButtonClickListener() {
             @Override
             public void onClick() {
-                finish();
-                System.exit(0);
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -137,5 +137,16 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         }).start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
     }
 }

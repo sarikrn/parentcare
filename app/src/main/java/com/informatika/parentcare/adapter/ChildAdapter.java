@@ -2,6 +2,7 @@ package com.informatika.parentcare.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.MyViewHolder
     private Activity mActivity;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public LinearLayout child_layout;
+        public CardView child_layout;
         public TextView txt_nama, txt_status;
         public ImageView txt_foto;
         public Button btn_lakukanTest;
@@ -81,6 +82,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.MyViewHolder
                 goDetail.putExtra("nama", anak.getNama());
                 goDetail.putExtra("urutan", anak.getUrutan());
                 goDetail.putExtra("orangTua", anak.getKode_orangtua());
+                goDetail.putExtra("halaman","home");
                 mActivity.startActivity(goDetail);
             }
         });

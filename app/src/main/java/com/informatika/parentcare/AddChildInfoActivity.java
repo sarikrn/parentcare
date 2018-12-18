@@ -91,7 +91,6 @@ public class AddChildInfoActivity extends AppCompatActivity {
 
         ttl = (EditText) findViewById(R.id.ttl);
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
@@ -120,7 +119,6 @@ public class AddChildInfoActivity extends AppCompatActivity {
     private void updateLabel() {
         String myFormat = "dd-MM-yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
         ttl.setText(sdf.format(myCalendar.getTime()));
     }
 
@@ -143,4 +141,9 @@ public class AddChildInfoActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(AddChildInfoActivity.this,HomeActivity.class));
+    }
 }

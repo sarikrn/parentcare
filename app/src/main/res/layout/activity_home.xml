@@ -9,6 +9,7 @@
     tools:context=".HomeActivity">
 
     //@Sari Kurnia : Judul halaman
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -29,16 +30,16 @@
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add_black_24dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@+id/title">
+        android:layout_below="@+id/title"
+        android:orientation="vertical">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -51,7 +52,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="193dp"
                     android:background="@color/colorPrimary"
                     android:orientation="vertical"
                     android:paddingBottom="15dp">
@@ -60,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="120dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -86,17 +87,17 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
+                    android:layout_height="match_parent">
                     <android.support.v7.widget.RecyclerView
+                        android:padding="10dp"
                         android:id="@+id/rc_list_request"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:clipToPadding="false" />
-
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="8dp"/>
                 </RelativeLayout>
+
+
 
             </LinearLayout>
 
