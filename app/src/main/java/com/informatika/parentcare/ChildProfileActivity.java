@@ -35,7 +35,9 @@ public class ChildProfileActivity extends AppCompatActivity {
         findViewById(R.id.lakukanTest).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChildProfileActivity.this, ConsultationActivity.class));
+                startActivity(new Intent(ChildProfileActivity.this, ConsultationActivity.class)
+                        .putExtra("kodeAnak", kodeAnak)
+                        .putExtra("nama", namaAnak));
             }
         });
     }

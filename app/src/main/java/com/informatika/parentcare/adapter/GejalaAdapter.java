@@ -83,6 +83,7 @@ public class GejalaAdapter extends BaseAdapter {
 
                 if (gejalaArrayList.get(pos).getSelected()) {
                     gejalaArrayList.get(pos).setSelected(false);
+                    dataGejala.remove(gejalaArrayList.get(pos));
                 } else {
                     gejalaArrayList.get(pos).setSelected(true);
                     dataGejala.add(gejalaArrayList.get(pos));

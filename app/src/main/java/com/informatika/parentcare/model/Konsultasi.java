@@ -2,19 +2,23 @@ package com.informatika.parentcare.model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @IgnoreExtraProperties
 public class Konsultasi implements Serializable {
-    private String jadwal;
-    private int id_kasus;
+    private String jadwal, kodekasus, id_anak;
+    private List<String> gejaladipilih = new ArrayList<>();
 
     public Konsultasi(){
     }
 
-    public Konsultasi(String jadwal, int id_kasus) {
+    public Konsultasi(String jadwal, String kodekasus, String id_anak, List<String> gejaladipilih) {
         this.jadwal = jadwal;
-        this.id_kasus = id_kasus;
+        this.kodekasus = kodekasus;
+        this.id_anak = id_anak;
+        this.gejaladipilih = gejaladipilih;
     }
 
     public String getJadwal() {
@@ -24,10 +28,24 @@ public class Konsultasi implements Serializable {
         this.jadwal = jadwal;
     }
 
-    public int getId_kasus() {
-        return id_kasus;
+    public String getkodekasus() {
+        return kodekasus;
     }
-    public void setId_kasus(int id_kasus) {
-        this.id_kasus = id_kasus;
+    public void setkodekasus(String kodekasus) {
+        this.kodekasus = kodekasus;
+    }
+
+    public String getId_anak() {
+        return id_anak;
+    }
+    public void setId_anak(String id_anak) {
+        this.id_anak = id_anak;
+    }
+
+    public List<String> getgejaladipilih() {
+        return gejaladipilih;
+    }
+    public void setgejaladipilih(List<String> gejaladipilih) {
+        this.gejaladipilih = gejaladipilih;
     }
 }

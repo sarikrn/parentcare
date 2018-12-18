@@ -1,5 +1,6 @@
 package com.informatika.parentcare;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,10 +17,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.informatika.parentcare.adapter.GejalaAdapter;
+import com.informatika.parentcare.model.Anak;
 import com.informatika.parentcare.model.Gejala;
+import com.informatika.parentcare.model.Konsultasi;
 
+import java.sql.SQLOutput;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ConsultationActivity extends AppCompatActivity {
@@ -30,6 +38,7 @@ public class ConsultationActivity extends AppCompatActivity {
 
     private float min = 0;
     private String kode;
+    private String kodeAnak, namaAnak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +52,11 @@ public class ConsultationActivity extends AppCompatActivity {
         findViewById(R.id.show_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(ConsultationActivity.this,ConsultationActivity.class);
-//                startActivity(intent);
                 kemiripanKonsultasi(v);
             }
         });
+
+
     }
 
     @Override
@@ -76,63 +85,66 @@ public class ConsultationActivity extends AppCompatActivity {
 
     public void kemiripanKonsultasi(View view) {
         if (adapter.dataGejala.size() > 0) {
-            final ArrayList<String> kodeGejala = new ArrayList<>();
-            final HashMap<String, Float> hasilKemiripan = new HashMap<>();
+            final List<String> kodeGejala = new ArrayList<>();
+            final Map<String, Float> hasilKemiripan = new HashMap<>();
 
-            for (Gejala gejala : adapter.dataGejala) {
-                kodeGejala.add(gejala.getKode());
+//            kodeGejala.clear();
+            for (Gejala d : adapter.dataGejala) {
+                kodeGejala.add(d.getKode());
             }
-            Toast.makeText(ConsultationActivity.this,String.valueOf(kodeGejala.size()),Toast.LENGTH_LONG).show();
 
-//            FirebaseDatabase.getInstance().getReference()
-//                    .child("kasus")
-//                    .addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(DataSnapshot dataSnapshot) {
-//                            for (DataSnapshot dataKasus : dataSnapshot.getChildren()) {
-//                                float kemiripan = 0;
-//                                for (DataSnapshot gejalaKasus : dataKasus.child("gejala").getChildren()) {
-//                                    if (kodeGejala.contains(gejalaKasus.getKey())) {
-////                                          kemiripan++;
-//                                        Toast.makeText(ConsultationActivity.this, String.valueOf(min), Toast.LENGTH_SHORT).show();
-//
-//                                    }
-//                                }
-//
-////                        float pembagi = Math.max((float) (dataKasus.child("gejala").getChildrenCount()), kodeGejala.size());
-////                        float hasil_bagi = kemiripan/pembagi;
-////
-////                        hasilKemiripan.put(dataKasus.getKey(), hasil_bagi);
-//                            }
-//
-////                    for (Map.Entry<String, Float> entry : hasilKemiripan.entrySet()){
-////                        if (entry.getValue() > min){
-////                            min = entry.getValue();
-////                            kode = entry.getKey();
-////                        }
-////                    }
-////
-////                    if(kode != null){
-////                        System.out.println(kode+" - "+min);
-////                        Toast.makeText(ConsultationActivity.this, String.valueOf(min), Toast.LENGTH_SHORT).show();
-//////                        solusi(kode,min);
-////                    }else{
-////                        Toast.makeText(ConsultationActivity.this, "Kasus yang mirip tidak ditemukan", Toast.LENGTH_SHORT).show();
-////                    }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(DatabaseError databaseError) {
-//                            Toast.makeText(ConsultationActivity.this, "Upss... Gagal mencari data", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
+            DatabaseReference kasus = FirebaseDatabase.getInstance().getReference().child("kasus");
+            kasus.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    hasilKemiripan.clear();
+                    for (DataSnapshot dataKasus : dataSnapshot.getChildren()) {
+                        float kemiripan = 0;
+                        for (DataSnapshot gejalaKasus : dataKasus.child("gejala").getChildren()) {
+                            if (kodeGejala.contains(gejalaKasus.getValue().toString())) {
+                                kemiripan++;
+                            }
+                        }
+
+                        float pembagi = Math.max((float) (dataKasus.child("gejala").getChildrenCount()), Float.valueOf(kodeGejala.size()));
+                        float hasil_bagi = kemiripan / pembagi;
+
+                        System.out.println("data kasus : " + dataKasus.child("gejala").getChildrenCount());
+                        System.out.println("kodeGejala : " + Float.valueOf(kodeGejala.size()));
+                        System.out.println("kemiripan : " + kemiripan);
+                        System.out.println("hasil bagi : " + String.valueOf(hasil_bagi));
+
+                        hasilKemiripan.put(dataKasus.getKey(), hasil_bagi);
+                    }
+
+                    for (Map.Entry<String, Float> entry : hasilKemiripan.entrySet()) {
+                        if (entry.getValue() > min) {
+                            min = entry.getValue();
+                            kode = entry.getKey();
+                        }
+                    }
+
+                    if (kode != null) {
+                        System.out.println(kode + " - " + min);
+                        solusi(kode, min, kodeGejala);
+                    } else {
+                        Toast.makeText(ConsultationActivity.this, "Kasus yang mirip tidak ditemukan", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(ConsultationActivity.this, "Upss... Gagal mencari data", Toast.LENGTH_SHORT).show();
+                }
+            });
         } else {
             Toast.makeText(ConsultationActivity.this, "Anda belum mengisi gejala yang anda rasakan", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void solusi(String kode, final float min) {
+    private void solusi(String kode, final float min, List<String> kodeGejala) {
         final String kode_kasus = kode;
+        final List<String> gejalaAnak = kodeGejala;
 
         if (min >= 0.75) {
             FirebaseDatabase.getInstance().getReference()
@@ -141,10 +153,32 @@ public class ConsultationActivity extends AppCompatActivity {
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            String solusiKasus = dataSnapshot.child("solusi").getValue().toString();
-                            Toast.makeText(ConsultationActivity.this, solusiKasus, Toast.LENGTH_SHORT).show();
+                            final String solusiKasus = dataSnapshot.child("solusi").getValue().toString();
+//                            Toast.makeText(ConsultationActivity.this, solusiKasus, Toast.LENGTH_SHORT).show();
 
-//                            FirebaseDatabase.getInstance().getReference().child("anak").child()
+                            kodeAnak = getIntent().getStringExtra("kodeAnak");
+                            namaAnak = getIntent().getStringExtra("nama");
+
+                            Konsultasi konsultasi = new Konsultasi("00-00-0000",
+                                    kode_kasus,
+                                    kodeAnak,
+                                    gejalaAnak);
+
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("konsultasi")
+                                    .setValue(konsultasi).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        startActivity(new Intent(ConsultationActivity.this, ResultConsultationActivity.class)
+                                                .putExtra("solusi", solusiKasus)
+                                                .putExtra("kodeAnak", kodeAnak));
+
+                                    } else {
+                                        //display failure
+                                    }
+                                }
+                            });
                         }
 
                         @Override

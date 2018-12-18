@@ -4,11 +4,13 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 @IgnoreExtraProperties
 public class Anak implements Serializable {
     private String nama, jeniskelamin, ttl, key, kode_orangtua, urutan;
+    private ArrayList<Konsultasi> konsultasiList = new ArrayList<>();
 
     public Anak(){
     }
