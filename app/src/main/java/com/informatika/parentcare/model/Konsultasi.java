@@ -9,7 +9,7 @@ import java.util.List;
 @IgnoreExtraProperties
 public class Konsultasi implements Serializable {
     private String jadwal, kodekasus, id_anak;
-    private List<String> gejaladipilih = new ArrayList<>();
+    private List<String> gejalaDipilih = new ArrayList<>();
 
     public Konsultasi(){
     }
@@ -18,7 +18,7 @@ public class Konsultasi implements Serializable {
         this.jadwal = jadwal;
         this.kodekasus = kodekasus;
         this.id_anak = id_anak;
-        this.gejaladipilih = gejaladipilih;
+        this.gejalaDipilih = gejaladipilih;
     }
 
     public String getJadwal() {
@@ -43,9 +43,9 @@ public class Konsultasi implements Serializable {
     }
 
     public List<String> getgejaladipilih() {
-        return gejaladipilih;
+        return gejalaDipilih;
     }
     public void setgejaladipilih(List<String> gejaladipilih) {
-        this.gejaladipilih = gejaladipilih;
+        this.gejalaDipilih = gejaladipilih;
     }
 }

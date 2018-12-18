@@ -8,12 +8,13 @@
     tools:context=".ConsultationActivity">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:letterSpacing="0.3"
         android:paddingLeft="10dp"
-        android:paddingTop="20dp"
+        android:paddingTop="30dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:text="TEST"

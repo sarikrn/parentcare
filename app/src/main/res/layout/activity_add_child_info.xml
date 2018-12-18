@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".AddChildInfoActivity">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:letterSpacing="0.3"
         android:paddingLeft="10dp"
-        android:paddingTop="20dp"
+        android:paddingTop="30dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:text="TAMBAH DATA ANAK"
@@ -22,59 +24,157 @@
         android:textSize="14dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/keterangan_anak"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:visibility="invisible"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_height="match_parent"
+        android:gravity="center">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/signup_input_layout_name"
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp">
+            android:layout_margin="25dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp"
+            app:cardUseCompatPadding="true">
 
-            <EditText
-                android:id="@+id/nama"
+            <TextView
+                android:id="@+id/keterangan_anak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Name" />
-        </android.support.design.widget.TextInputLayout>
+                android:text=""
+                android:visibility="invisible" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/signup_input_layout_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp">
-
-            <EditText
-                android:id="@+id/status_anak"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Urutan Anak"
-                android:inputType="text" />
-        </android.support.design.widget.TextInputLayout>
+                android:padding="30dp">
 
-        <Button
-            android:id="@+id/btn_add_child"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="SignUP"
-            android:textColor="@android:color/white" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="#F8F8F8"
+                        android:paddingLeft="5dp">
+
+                        <EditText
+                            android:id="@+id/nama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#F8F8F8"
+                            android:cursorVisible="true"
+                            android:hint="Nama Lengkap Anak"
+                            android:inputType="textPersonName"
+                            android:textColor="#686868"
+                            android:textColorHint="#686868"
+                            android:textSize="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:paddingLeft="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="15dp"
+                            android:text="Jenis Kelamin"
+                            android:textColor="#686868"
+                            android:textSize="16dp" />
+
+                        <RadioGroup
+                            android:id="@+id/statusGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <RadioButton
+                                android:id="@+id/laki"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:buttonTint="@color/colorPrimary"
+                                android:text="Laki - Laki"
+                                android:textColor="#686868"
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/perempuan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/colorPrimary"
+                                android:text="Perempuan"
+                                android:textColor="#686868"
+                                android:textSize="15dp" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="#F8F8F8"
+                        android:paddingLeft="5dp">
+
+                        <EditText
+                            android:id="@+id/statusAnak"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#F8F8F8"
+                            android:hint="Anak Ke : "
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textColor="#686868"
+                            android:textColorHint="#686868"
+                            android:textSize="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="#F8F8F8"
+                        android:paddingLeft="5dp">
+
+                        <EditText
+                            android:id="@+id/ttl"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#F8F8F8"
+                            android:hint="Tanggal Lahir : HH-BB-TTTT"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:textColor="#686868"
+                            android:textColorHint="#686868"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_register_anak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/button_general"
+                        android:text="Submit"
+                        android:textColor="@android:color/white"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
+
+
 </LinearLayout>

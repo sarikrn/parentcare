@@ -1,7 +1,9 @@
 package com.informatika.parentcare;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class ResultConsultationActivity extends AppCompatActivity {
@@ -20,5 +22,11 @@ public class ResultConsultationActivity extends AppCompatActivity {
         solusiHasil = (TextView) findViewById(R.id.deskSolusi);
         solusiHasil.setText(kodeAnak + " - " + solusi);
 
+        findViewById(R.id.btn_kembaliProfilAnak).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ResultConsultationActivity.this, ChildProfileActivity.class));
+            }
+        });
     }
 }

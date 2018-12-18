@@ -2,6 +2,7 @@ package com.informatika.parentcare;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.informatika.parentcare.adapter.ChildAdapter;
 import com.informatika.parentcare.model.Anak;
+import com.informatika.parentcare.model.Pengguna;
 
 import java.util.ArrayList;
 
@@ -27,14 +29,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private DatabaseReference database;
     private FirebaseAuth mAuth;
-
     private ArrayList<Anak> dfAnak;
     private ChildAdapter requestChildAdapter;
-
     private RecyclerView rc_list_request;
     private ProgressDialog loading;
-    private FloatingActionButton fab_add;
-    private TextView judul;
+    private TextView orangTua;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         rc_list_request = findViewById(R.id.rc_list_request);
+        orangTua = (TextView) findViewById(R.id.orangTua);
 
         findViewById(R.id.fab_add).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +59,21 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        database.child("pengguna")
+                .child(mAuth.getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Pengguna pengguna = dataSnapshot.getValue(Pengguna.class);
+                orangTua.setText(pengguna.getStatus() + " " + pengguna.getNama());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                System.out.println(databaseError.getDetails() + " " + databaseError.getMessage());
+            }
+        });
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rc_list_request.setLayoutManager(mLayoutManager);

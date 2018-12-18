@@ -33,12 +33,12 @@ public class ConsultationActivity extends AppCompatActivity {
     private ArrayList<Gejala> gejalaArrayList = new ArrayList<>();
     private GejalaAdapter adapter;
     private ListView listView;
-
-    private DatabaseReference dbGejala;
-
+    private DatabaseReference dbGejala, dbKonsultasi;
     private float min = 0;
     private String kode;
     private String kodeAnak, namaAnak;
+    private int counter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class ConsultationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_consultation);
 
         dbGejala = FirebaseDatabase.getInstance().getReference();
+        dbKonsultasi = FirebaseDatabase.getInstance().getReference();
 
         listView = (ListView) findViewById(R.id.gejala_listView);
 
@@ -56,6 +57,18 @@ public class ConsultationActivity extends AppCompatActivity {
             }
         });
 
+        dbKonsultasi.child("konsultasi").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int size = (int) dataSnapshot.getChildrenCount();
+                counter = size+1;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -166,6 +179,7 @@ public class ConsultationActivity extends AppCompatActivity {
 
                             FirebaseDatabase.getInstance().getReference()
                                     .child("konsultasi")
+                                    .child("Konsul" + String.valueOf(counter))
                                     .setValue(konsultasi).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -179,6 +193,7 @@ public class ConsultationActivity extends AppCompatActivity {
                                     }
                                 }
                             });
+
                         }
 
                         @Override

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.informatika.parentcare.R;
@@ -62,6 +63,7 @@ public class GejalaAdapter extends BaseAdapter {
 
             holder.checkBox = (CheckBox) convertView.findViewById(R.id.gejala_checkBox);
             holder.tvAnimal = (TextView) convertView.findViewById(R.id.gejala_desk);
+            holder.gj_layout = (RelativeLayout) convertView.findViewById(R.id.gj_layout);
 
             convertView.setTag(holder);
         } else {
@@ -96,6 +98,7 @@ public class GejalaAdapter extends BaseAdapter {
     private class ViewHolder {
         protected CheckBox checkBox;
         private TextView tvAnimal;
+        private RelativeLayout gj_layout;
     }
 
 }
