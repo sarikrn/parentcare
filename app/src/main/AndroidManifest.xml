@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".psikolog.AddCasebaseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +26,10 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".ConsultationActivity" />
         <activity android:name=".ResultConsultationActivity" />
-        <activity android:name=".LoginPsikologActivity" />
-        <activity android:name=".AddCasebaseActivity" />
-        <activity android:name=".ResultNewCaseActivity"></activity>
+        <activity android:name=".psikolog.LoginPsikologActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".psikolog.ResultNewCaseActivity" />
+        <activity android:name=".psikolog.HomePsikologActivity"></activity>
     </application>
 
 </manifest>

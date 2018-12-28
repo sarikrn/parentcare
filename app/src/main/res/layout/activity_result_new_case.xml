@@ -24,16 +24,41 @@
         android:textSize="14dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/gejalaHasil"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:padding="30dp">
 
-    <TextView
-        android:id="@+id/solusiHasil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/kodeKasus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="Kode Kasus"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rc_list_newcase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/solusiHasil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Solusi"
+            android:textSize="16dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

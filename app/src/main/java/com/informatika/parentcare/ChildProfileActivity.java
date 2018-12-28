@@ -74,6 +74,7 @@ public class ChildProfileActivity extends AppCompatActivity {
         dbAnak.child("konsultasi")
                 .orderByChild("id_anak")
                 .equalTo(kodeAnak)
+                .orderByChild("jadwal")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

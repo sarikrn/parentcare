@@ -97,8 +97,6 @@
                         tools:layout_editor_absoluteY="8dp"/>
                 </RelativeLayout>
 
-
-
             </LinearLayout>
 
         </ScrollView>

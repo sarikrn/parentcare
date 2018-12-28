@@ -44,6 +44,9 @@ public class ResultConsultationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(ResultConsultationActivity.this,ChildProfileActivity.class));
+        startActivity(new Intent(ResultConsultationActivity.this, ChildProfileActivity.class)
+                .putExtra("kodeAnak", kodeAnak)
+                .putExtra("nama", namaAnak)
+                .putExtra("urutan", urutanAnak));
     }
 }
