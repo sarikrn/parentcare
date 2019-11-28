@@ -1,60 +1,45 @@
 {
   "project_info": {
-    "project_number": "989041792957",
-    "firebase_url": "https://parentcare-medis.firebaseio.com",
-    "project_id": "parentcare-medis",
-    "storage_bucket": "parentcare-medis.appspot.com"
+    "project_number": "34061419059",
+    "firebase_url": "https://parentcare-16b96.firebaseio.com",
+    "project_id": "parentcare-16b96",
+    "storage_bucket": "parentcare-16b96.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:989041792957:android:5c49f371a69704d9",
+        "mobilesdk_app_id": "1:34061419059:android:12ec9b8e953386774ed946",
         "android_client_info": {
           "package_name": "com.informatika.parentcare"
         }
       },
       "oauth_client": [
         {
-          "client_id": "989041792957-3i3jqvjhtu2jqfet93e9ocl2i0b22g0j.apps.googleusercontent.com",
+          "client_id": "34061419059-eqvt7p34l3av3hnoo0s9ljshfb4jsnpr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.informatika.parentcare",
-            "certificate_hash": "ffb1d143f30e5017f1287547d44516ce5e3ca5da"
+            "certificate_hash": "d22d7e86fbf00f676e2bccd57b65ee9b6842d2ba"
           }
         },
         {
-          "client_id": "989041792957-tg5klb3v34gc63rj5ia0513atfgc80dq.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.informatika.parentcare",
-            "certificate_hash": "b2719e78d3ca49489c02ba1538c2dd6226e0448f"
-          }
-        },
-        {
-          "client_id": "989041792957-7gl59hb7ijfjilqcu2ggdtiubvi2tnln.apps.googleusercontent.com",
+          "client_id": "34061419059-dmi4n6unn8v3gueabs88df3agajbcdcd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDMqyTCJAgYevs_AmF74v-f1PhBbhwhYNs"
+          "current_key": "AIzaSyDzgtSwQrex5Qc1xMEQ-LgBMjVDYHo2XN0"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "989041792957-7gl59hb7ijfjilqcu2ggdtiubvi2tnln.apps.googleusercontent.com",
+              "client_id": "34061419059-dmi4n6unn8v3gueabs88df3agajbcdcd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
